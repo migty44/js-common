@@ -1,0 +1,35 @@
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+<script>
+$(function () {
+
+    if ($('#mapWrapper').length > 0) {
+        var myMap;
+        ymaps.ready(init);
+
+        function init() {
+
+            if ($(window).width() > 768) {
+                myMap = new ymaps.Map("mapWrapper", {
+                    center: [60, 30.3136],
+                    zoom: 10
+                });
+                myMap.behaviors.disable('scrollZoom');
+            } else {
+                myMap = new ymaps.Map("mapWrapper", {
+                    center: [60.05, 30.3136],
+                    zoom: 9.5
+                });
+            }
+
+            myMap.geoObjects.add(new ymaps.Placemark([55.84222430559653, 37.48559458200064], {
+                balloonContent: '+7 (495) 111 11 11<br>mail@gmail.com',
+                iconCaption: 'Точка 1'
+            }, {
+                preset: 'islands#icon',
+                iconColor: '#0095b6'
+            }));
+        }
+    }
+});
+</script>
